@@ -33,5 +33,5 @@ out_protocol=Soap11())
 wsgi_application = WsgiApplication(application)
 
 if __name__ == '__main__':
-    server = make_server('0.0.0.0', 3535, wsgi_application)
+    server = make_server('0.0.0.0', 17995, wsgi_application)
     server.serve_forever()
