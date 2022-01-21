@@ -3,6 +3,15 @@ from spyne.protocol.soap import Soap11
 from spyne.server.wsgi import WsgiApplication
 from wsgiref.simple_server import make_server
 
+import os
+ON_HEROKU = os.environ.get('ON_HEROKU')
+
+if ON_HEROKU:
+    # get the heroku port
+    port = int(os.environ.get('PORT', 17995))  # as per OP comments default is 17995
+else:
+    port = 3000
+
 vehicules = {"data": []}
 vehicules["data"].append({"name": "Volkswagen ID.3 Pure Performance", "chargingTime": 450, "autonomy": 275})
 vehicules["data"].append({"name": "Tesla Model 3", "chargingTime": 375, "autonomy": 380})
