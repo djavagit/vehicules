@@ -4,13 +4,8 @@ from spyne.server.wsgi import WsgiApplication
 from wsgiref.simple_server import make_server
 
 import os
-ON_HEROKU = os.environ.get('ON_HEROKU')
+port = int(os.environ.get('PORT', 17777))  # as per OP comments default is 17995
 
-if ON_HEROKU:
-    # get the heroku port
-    port = int(os.environ.get('PORT', 17777))  # as per OP comments default is 17995
-else:
-    port = 3000
 
 print('test')
 
@@ -35,5 +30,6 @@ out_protocol=Soap11())
 wsgi_application = WsgiApplication(application)
 
 if __name__ == '__main__':
-    server = make_server('0.0.0.0', 17777, wsgi_application)
+    print(f'Serve running on {port}')
+    server = make_server('0.0.0.0', port, wsgi_application)
     server.serve_forever()
