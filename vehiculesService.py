@@ -12,6 +12,8 @@ if ON_HEROKU:
 else:
     port = 3000
 
+print('test')
+
 vehicules = {"data": []}
 vehicules["data"].append({"name": "Volkswagen ID.3 Pure Performance", "chargingTime": 450, "autonomy": 275})
 vehicules["data"].append({"name": "Tesla Model 3", "chargingTime": 375, "autonomy": 380})
